@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Services & Advisory — David Janoska">
+  <title>Services & Advisory — David Janoska</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .services-hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+    }
+    .services-hero h1 {
+      margin: 0 auto 16px;
+      font-size: clamp(34px, 4.5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      max-width: 750px;
+    }
+    .services-hero .role-line {
+      margin: 0 auto 20px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .services-hero .intro {
+      margin: 0 auto;
+      max-width: 620px;
+      color: #414853;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .offerings-section {
+      padding: 80px 0 96px;
+      background: var(--white);
+    }
+    .offerings-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .offerings-heading h2 {
+      margin: 0 auto 12px;
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+    }
+    .offerings-heading p {
+      margin: 0 auto;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .service-card-content {
+      padding: 36px 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+    .service-card-content h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+    .service-card-content p {
+      margin: 0 0 20px;
+      color: #505762;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .conditions-box {
+      text-align: center !important;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin: 16px auto 24px auto;
+      width: 100%;
+      max-width: 380px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .conditions-box strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .service-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+    .service-badge {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Kiemelt, sötétebb grafitszürke űrlap háttér */
+    .contact-form-section {
+      padding: 90px 0;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+    }
+    .contact-form-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #e8eaed; /* Mélyebb grafitszürke / tónusosabb háttér */
+      border: 1px solid #d0d5dd;
+      padding: 50px 45px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+    }
+    .contact-form-wrapper h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-align: center;
+    }
+    .contact-form-wrapper p {
+      margin: 0 0 32px;
+      color: #4b515b;
+      font-size: 14px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      color: var(--ink);
+      font: 14px/1.5 Arial, Helvetica, sans-serif;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Lebegő sáv */
+    .floating-contact-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      font-size: 13px;
+    }
+    .floating-btn {
+      background: var(--white);
+      color: var(--ink);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+    .floating-btn:hover {
+      background: var(--muted);
+      color: var(--white);
+    }
+
+    @media (max-width: 850px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">DAVID JANOSKA</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <a class="button header-contact" href="#contact">Contact me</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO SECTION -->
+    <section class="services-hero">
+      <div class="container">
+        <p class="eyebrow">Advisory & Consulting</p>
+        <h1>Turning operational data into business outcomes.</h1>
+        <p class="role-line">E-Commerce Funnel Optimization · MVP Business Scoping</p>
+        <p class="intro">
+          Senior-level product ownership and business analysis expertise focused on e-commerce conversion efficiency and rapid MVP scoping without execution bloat.
+        </p>
+      </div>
+    </section>
+
+    <!-- OFFERINGS SECTION -->
+    <section class="offerings-section" id="offerings">
+      <div class="container">
+        <div class="offerings-heading">
+          <p class="eyebrow">Offerings</p>
+          <h2>How I can help.</h2>
+          <p>Targeted, high-impact advisory packages tailored for e-commerce platforms and digital product teams.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <!-- Card 1 -->
+          <article class="project-card">
+            <div class="service-card-content">
+              <p class="project-type">Area 01 · Analytics & Performance</p>
+              <h3>E-Commerce Funnel & Checkout Optimization</h3>
+              <p>
+                Deep analytical audit of user drop-offs, shopping cart mechanics, and checkout funnel friction points based on real quantitative data.
+              </p>
+              <div class="conditions-box">
+                <strong>Prerequisite:</strong> Available strictly when analytical data, metrics, and funnel telemetry can be reviewed and provided for evaluation.
+              </div>
+              <div class="service-badge-list">
+                <span class="service-badge">Checkout Architecture</span>
+                <span class="service-badge">Cart Abandonment</span>
+                <span class="service-badge">CR Tuning</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card">
+            <div class="service-card-content">
+              <p class="project-type">Area 02 · Product Strategy</p>
+              <h3>MVP Business Scoping & Requirements</h3>
+              <p>
+                Translating raw business ideas and product concepts into structured functional requirements, user flows, and prioritized backlogs (RICE/WSJF).
+              </p>
+              <div class="conditions-box">
+                <strong>Scope Note:</strong> Advisory focuses strictly on business requirements, architecture planning, and functional specifications. <em>Execution and software development are not part of this package.</em>
+              </div>
+              <div class="service-badge-list">
+                <span class="service-badge">Product Discovery</span>
+                <span class="service-badge">Acceptance Criteria (BDD)</span>
+                <span class="service-badge">Backlog Prioritization</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-form-section" id="contact">
+      <div class="container">
+        <div class="contact-form-wrapper">
+          <p class="eyebrow" style="text-align: center;">Get in touch</p>
+          <h2>Let's discuss your project.</h2>
+          <p>Send a direct message regarding advisory opportunities or project scoping.</p>
+
+          <form action="https://formspree.io/f/mvkkdplw" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Project Details / Message</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Describe your funnel or MVP scope requirements..."></textarea>
+            </div>
+            
+            <button type="submit" class="button" style="width: 100%; margin-top: 10px;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ALWAYS-ON FLOATING BOTTOM BAR -->
+  <div class="floating-contact-bar">
+    <span>Ready to optimize your product?</span>
+    <a href="#contact" class="floating-btn">Contact me</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/">Home</a>
+          <a href="/#about">About</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/david-janoska/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/djanoska" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>© 2026 David Janoska. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
