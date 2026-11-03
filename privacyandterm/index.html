@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Information — David Janoska</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .legal-container {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+    .legal-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 8px 16px;
+      transition: color 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--ink);
+      background: var(--soft);
+      border-radius: 4px;
+    }
+    .legal-content {
+      display: none;
+      line-height: 1.7;
+      color: #414853;
+    }
+    .legal-content.active {
+      display: block;
+    }
+    .legal-content h3 {
+      font-size: 18px;
+      color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">DAVID JANOSKA</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <a class="button" href="/">Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="legal-container">
+      <p class="eyebrow">Legal</p>
+      <h1 style="font-size: clamp(32px, 4vw, 42px); margin-bottom: 20px; letter-spacing: -1px;">Privacy & Terms</h1>
+      
+      <!-- Tab váltó gombok -->
+      <div class="legal-tabs">
+        <button class="tab-btn active" onclick="switchTab('privacy', event)">Privacy Policy</button>
+        <button class="tab-btn" onclick="switchTab('terms', event)">Terms of Service</button>
+      </div>
+
+     <!-- Privacy Policy tartalom -->
+<div id="privacy" class="legal-content active">
+  <h3>1. Data Controller</h3>
+  <p>The data controller responsible for processing personal data on this portfolio website is Jánoska Dávid. You can reach out regarding data protection matters exclusively through the contact form provided on this website.</p>
+
+  <h3>2. Contact Form & Data Usage</h3>
+  <p>When you use the contact form on this website, you provide your name, email address, and message content on a strictly voluntary basis.</p>
+  <p><strong>Purpose:</strong> The data provided here is used exclusively for communication and replying to your inquiries.</p>
+  <p><strong>Data Retention:</strong> Data retention complies fully with GDPR requirements and is kept only as long as necessary for handling your inquiry.</p>
+
+  <h3>3. Data Processors & Third-Party Services</h3>
+  <p>To operate this website securely, I use the following third-party services:</p>
+  <ul>
+    <li><strong>Formspree:</strong> Acts as the form backend processor to securely transmit messages submitted via the website's contact form.</li>
+    <li><strong>Cloudflare:</strong> Provides domain name services, email routing/processing, and privacy-first, cookieless, anonymous web analytics.</li>
+  </ul>
+
+  <h3>4. Your Rights</h3>
+  <p>Under the GDPR, you have the right to request access to, correction of, or deletion of your personal data at any time by reaching out via the contact form on this website.</p>
+</div>
+
+<!-- Terms of Service tartalom -->
+<div id="terms" class="legal-content">
+  <h3>1. Intellectual Property</h3>
+  <p>All code structures, project demos, text, and visual elements on this portfolio website are the exclusive property of Jánoska Dávid, unless stated otherwise.</p>
+
+  <h3>2. Nature of Services</h3>
+  <p>The projects, demos, and advisory services presented on this site are for informational and professional showcase purposes. Advisory engagements (such as Funnel Optimization or MVP Scoping) are subject to individual agreements.</p>
+
+  <h3>3. Limitation of Liability</h3>
+  <p>I strive to keep all information accurate and systems operational, however, I disclaim liability for any technical issues, downtime, or service interruptions caused by third-party providers (such as Formspree, Cloudflare, or GitHub Pages).</p>
+</div>
+
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+        <p>© 2026 David Janoska. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="/privacyandterm/">Privacy & Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.legal-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
