@@ -218,3 +218,39 @@ a { color: inherit; text-decoration: none; }
   .footer-nav { gap: 16px 22px; }
   .legal-links { flex-wrap: wrap; }
 }
+
+/* Modal Pop-up stílusok a tiszta designrendszerhez igazítva */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(32, 33, 36, 0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+.modal-content {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: var(--ink);
+}
