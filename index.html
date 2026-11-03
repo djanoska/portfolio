@@ -280,16 +280,16 @@
 
 <!-- SCRIPT -->
   <script>
-    const contactBtn = document.querySelector('a[href="mailto:janoskadavid@gmail.com"]');
+    const contactBtns = document.querySelectorAll('a[href="mailto:janoskadavid@gmail.com"]');
     const modal = document.getElementById('contact-modal');
     const closeModal = document.getElementById('close-modal');
 
-    if (contactBtn) {
-      contactBtn.addEventListener('click', (e) => {
+    contactBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
         e.preventDefault();
         modal.style.display = 'flex';
       });
-    }
+    });
 
     if (closeModal) {
       closeModal.addEventListener('click', () => {
@@ -298,9 +298,7 @@
     }
 
     window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
+      e.target === modal && (modal.style.display = 'none');
     });
   </script>
   
