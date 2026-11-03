@@ -257,7 +257,7 @@
     <h2>Let's discuss your project.</h2>
     <p style="color: var(--muted); text-align: center; margin-bottom: 24px; font-size: 14px;">Send a direct message regarding advisory opportunities or project scoping.</p>
 
-    <form action="https://formspree.io/f/mvkkdplw" method="POST">
+    <form id="modal-contact-form" action="https://formspree.io/f/mvkkdplw" method="POST">
       <div class="form-group" style="margin-bottom: 16px; text-align: left;">
         <label for="modal-name" style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px;">Your Name</label>
         <input type="text" id="modal-name" name="name" required placeholder="John Doe" style="width: 100%; background: var(--white); border: 1px solid var(--line); padding: 12px 14px; font: 14px/1.5 Arial, Helvetica, sans-serif;">
@@ -265,7 +265,9 @@
       
       <div class="form-group" style="margin-bottom: 16px; text-align: left;">
         <label for="modal-email" style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px;">Email Address</label>
-        <input type="email" id="modal-email" name="email" required placeholder="john@example.com" style="width: 100%; background: var(--white); border: 1px solid var(--line); padding: 12px 14px; font: 14px/1.5 Arial, Helvetica, sans-serif;">
+        <input type="email" id="modal-email" name="email" required placeholder="john@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" style="width: 100%; background: var(--white); border: 1px solid var(--line); padding: 12px 14px; font: 14px/1.5 Arial, Helvetica, sans-serif;">
+        <!-- Helyi hibaüzenet elem -->
+        <div id="email-error-msg" style="color: #d9534f; font-size: 12px; margin-top: 4px; display: none;">Kérlek add meg a teljes e-mail címet érvényes domain végződéssel (pl. .com vagy .hu).</div>
       </div>
       
       <div class="form-group" style="margin-bottom: 20px; text-align: left;">
@@ -279,28 +281,49 @@
 </div>
 
 <!-- SCRIPT -->
-  <script>
-    const contactBtns = document.querySelectorAll('a[href="mailto:janoskadavid@gmail.com"]');
-    const modal = document.getElementById('contact-modal');
-    const closeModal = document.getElementById('close-modal');
+<script>
+  const contactBtns = document.querySelectorAll('a[href="mailto:janoskadavid@gmail.com"]');
+  const modal = document.getElementById('contact-modal');
+  const closeModal = document.getElementById('close-modal');
 
-    contactBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.style.display = 'flex';
-      });
+  contactBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'flex';
     });
+  });
 
-    if (closeModal) {
-      closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-    }
-
-    window.addEventListener('click', (e) => {
-      e.target === modal && (modal.style.display = 'none');
+  if (closeModal) {
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
     });
-  </script>
+  }
+
+  window.addEventListener('click', (e) => {
+    e.target === modal && (modal.style.display = 'none');
+  });
+
+  // Kliens oldali email validáció a beküldés előtt
+  const contactForm = document.getElementById('modal-contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      const emailInput = document.getElementById('modal-email');
+      const errorMsg = document.getElementById('email-error-msg');
+      const email = emailInput.value.trim();
+      
+      // Szigorú regex a teljes domain struktúrához (pl. valaki@domain.hu)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailRegex.test(email)) {
+        e.preventDefault(); // Megakadályozza a Formspree-re való továbbítást
+        errorMsg.style.display = 'block';
+        emailInput.focus();
+      } else {
+        errorMsg.style.display = 'none';
+      }
+    });
+  }
+</script>
   
 </body>
 </html>
