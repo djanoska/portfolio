@@ -18,9 +18,9 @@ Personal professional portfolio and digital product prototyping laboratory showc
 * **Analytics:** Cloudflare Web Analytics.
 
 ## 📂 Project Structure
-```text
 ├── index.html           # Main portfolio landing page & professional profile
+├── /services/           # Professional service offerings & consulting frameworks
 ├── /metronome/          # TempoCoach: Browser-based rhythmic utility & practice metronome
 ├── /szofejto/           # Szófejtő: Interactive Hungarian word puzzle application
-└── /experiments/        # Prototyping sandbox for AI-assisted frontend MVPs and micro-tools
----
+├── /experiments/        # Prototyping sandbox for AI-assisted frontend MVPs and micro-tools
+└── /privacyandterm/     # Legal content layout & compliance pages
