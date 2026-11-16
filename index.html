@@ -142,6 +142,50 @@
         </div>
         -->
 
+        <!-- Context: #experience visual block in index.html -->
+<div class="experience-visual">
+  <div class="artwork experience-photo">
+    <img
+      src="office.jpg"
+      alt="Dávid Jánoska — Product Owner"
+      draggable="false"
+      style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;"
+    >
+  </div>
+</div>
+
+        /* Context: Fit office.jpg in .experience-visual and block click/drag opening */
+.experience-visual .artwork.experience-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.experience-visual .artwork.experience-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+}
+
+.experience-visual .artwork.experience-photo img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+// Context: Prevent right-click context menu on experience office photo
+document.addEventListener('DOMContentLoaded', () => {
+  const expPhoto = document.querySelector('.experience-visual .artwork.experience-photo');
+  if (expPhoto) {
+    expPhoto.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+});
+        
         <div class="experience-copy">
           <p class="eyebrow">Experience</p>
           <h2>Where product thinking meets engineering reality.</h2>
