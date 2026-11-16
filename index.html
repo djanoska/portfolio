@@ -88,6 +88,42 @@
               alt="Jánoska Dávid — Product Owner"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
     </div>
+
+        <style>
+  /* Context: Prevent direct interaction and image opening on about portrait */
+  .artwork.about-visual {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .artwork.about-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .artwork.about-visual img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+</style>
+
+        <script>
+  // Context: Disable right-click context menu on about portrait container
+  document.addEventListener('DOMContentLoaded', () => {
+    const aboutVisual = document.querySelector('.artwork.about-visual');
+    if (aboutVisual) {
+      aboutVisual.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
+  });
+</script>
+
+        
     </section>
 
     <section class="experience-section" id="experience">
