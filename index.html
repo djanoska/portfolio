@@ -153,8 +153,7 @@
     >
   </div>
 </div>
-
-        /* Context: Fit office.jpg in .experience-visual and block click/drag opening */
+ <style>
 .experience-visual .artwork.experience-photo {
   position: relative;
   width: 100%;
@@ -177,14 +176,17 @@
   -webkit-user-drag: none;
   user-drag: none;
 }
+</style>        
 
-// Context: Prevent right-click context menu on experience office photo
+ <script>
 document.addEventListener('DOMContentLoaded', () => {
   const expPhoto = document.querySelector('.experience-visual .artwork.experience-photo');
   if (expPhoto) {
     expPhoto.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 });
+</script>
+        
         
         <div class="experience-copy">
           <p class="eyebrow">Experience</p>
